@@ -1,7 +1,10 @@
 #include<iostream>
 using namespace std ;
+// for optimisation we can take bool variable to check if any swap is made in the inner loop
+// if no swap is made then we can break the loop early
 void BubbleSort(int arr[],int n)
 {
+    bool swapped = false ;
     for(int i = 0 ; i< n- 1; i++)
     {
         for(int j = 0 ; j< n - i - 1; j++)
@@ -9,7 +12,12 @@ void BubbleSort(int arr[],int n)
             if(arr[j] > arr[j+1])
             {
                 swap(arr[j], arr[j+1]);
+                swapped = true; // a swap was made
             }
+        }
+        if(!swapped) 
+        {
+            break;
         }
     }
 }
