@@ -40,4 +40,9 @@ for(auto i : m)
     cout << i.first <<" "<<i.second << endl; 
 }
 cout << endl ;
+  auto it = m.find(1); // Finding the iterator for the key 1
+  for(auto i = it; i != m.end(); i++) // Iterating from the found iterator to the end of the map
+  {
+      cout << (*i).first << " " << (*i).second << endl; // Printing the key and value of each element from the found iterator to the end
+  }
 }
