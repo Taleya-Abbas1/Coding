@@ -51,7 +51,8 @@ void Merge(int *arr , int s , int e)
 //     cout << arr[i] << " ";
 // }
 // cout << endl;
-      
+      delete []first ;
+      delete []second ;
 }
 
 
@@ -114,6 +115,11 @@ int main()
 // Merge [3, 27, 38, 43] and [9, 10, 82]
 
 // Final sorted array: [3, 9, 10, 27, 38, 43, 82]
+
+
+// time complixity O(nlogn)..........................
+
+// space complexity O(n).........................
 
 
 
