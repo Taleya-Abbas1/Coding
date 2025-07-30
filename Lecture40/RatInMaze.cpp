@@ -2,9 +2,9 @@
 #include <vector>
 #include <algorithm>
 using namespace std;
-bool isSafe(vector<vector<int>> &m,int newx , int newy , vector<vector<int>>&  visited,int n)
+bool isSafe(vector<vector<int>> &m,int newx , int newy , vector<vector<int>>  visited,int n)
 {
-    if((newx >=0 && newx<=n-1)&& (newy>=0 && newy<= n-1) && m[newx][newy] ==1 &&   visited[newx][newy] == 0 )
+    if((newx >=0 && newx<n)&& (newy>=0 && newy< n) && m[newx][newy] ==1 &&   visited[newx][newy] == 0 )
     {
         return true ;
     }
@@ -42,7 +42,8 @@ void SolveMaze(int n ,vector<vector<int>> &m,  vector<string>& ans,int x , int y
     {
         path.push_back('U');
         SolveMaze(n,m,ans,newx,newy,visited,path);
-        path.pop_back(); // backtrack
+         path.pop_back(); // backtrack
+
 
     }
     // right
@@ -52,7 +53,8 @@ void SolveMaze(int n ,vector<vector<int>> &m,  vector<string>& ans,int x , int y
     {
         path.push_back('R');
         SolveMaze(n,m,ans,newx,newy,visited,path);
-        path.pop_back(); // backtrack
+         path.pop_back(); // backtrack
+
 
     }
     // left
@@ -62,7 +64,7 @@ void SolveMaze(int n ,vector<vector<int>> &m,  vector<string>& ans,int x , int y
     {
         path.push_back('L');
         SolveMaze(n,m,ans,newx,newy,visited,path);
-        path.pop_back(); // backtrack
+       
 
     }
 
@@ -73,6 +75,8 @@ void SolveMaze(int n ,vector<vector<int>> &m,  vector<string>& ans,int x , int y
 vector<string> ratInMaze(int n ,vector<vector<int>> &m)
 {
     vector<string> ans;
+
+   
     string path = "";
     int srcx = 0 ;
     int srcy = 0 ;
@@ -86,7 +90,7 @@ vector<string> ratInMaze(int n ,vector<vector<int>> &m)
        }
      }
     SolveMaze(n, m, ans, srcx, srcy, visited, path);
-     sort(ans.begin(),ans.end());
+   sort(ans.begin(),ans.end());
     return ans;
 }
 int main()
@@ -96,15 +100,17 @@ int main()
     vector<vector<int>> m ={
         {1, 0, 0, 0},
         {1, 1, 0, 1},
-        {0, 1, 0, 0},
-        {1, 1, 1, 1}
+        {1, 1, 0, 0},
+        {0, 1, 1, 1}
     };
+
 
     vector<string> result = ratInMaze(n, m);
     cout << "Paths from source to destination are:" << endl;
+    cout << "-----------------------------------" << endl;
     if (result.empty()) {
         cout << "No path exists." << endl;
-        return 0;
+    
     }
     
     for (const auto& path : result) {
